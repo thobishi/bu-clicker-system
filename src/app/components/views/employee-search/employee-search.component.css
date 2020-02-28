@@ -1,0 +1,31 @@
+#employee-search {
+    height: 100vh;
+    background: url('../../../../assets/images/bu-top-of-mine-large.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.bu-box-0 {
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.bu-box-1 {
+    height: 100%;
+}
+.bu-title-container .list-group-item {
+    width: 35rem;
+    border: none;
+    background-color: transparent;
+}
+.bu-wrapper {
+    height: 55rem;
+    width: 75rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+
+}
+.bu-input {
+    border-radius: 5px;
+    border: 0.1rem solid #108954;
+}

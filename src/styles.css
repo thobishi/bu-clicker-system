@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: #D5DDDF;
+}
+.bu-flex-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bu-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

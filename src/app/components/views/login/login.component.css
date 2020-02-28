@@ -1,0 +1,26 @@
+#bu-main-container {
+    height: 100vh;
+    padding: 0;
+    background: url('../../../../assets/images/bu-top-of-mine-large.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.bu-login-wrapper {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.bu-login-box-0 {
+    border-radius: 5px;
+    padding: 0px;
+    height: auto;
+    background-color: rgba(16, 137, 84, 1);
+}
+.bu-login-box-1 {
+    border-radius: 5px;
+    padding: 50px 30px;
+    min-width: 450px;
+    height: auto;
+    background-color: #fff;
+}
