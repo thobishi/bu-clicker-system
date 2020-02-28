@@ -1,0 +1,16 @@
+
+.bu-link-btn {
+  cursor: pointer;
+  height: 10rem;
+  width: 70%;
+}
+.bu-menu-row {
+}
+.bu-link-btn:hover {
+  box-shadow: 1px 1px 10px rgba(0,0,0,.4)!important;
+}
+.bu-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}

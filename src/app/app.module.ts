@@ -9,6 +9,8 @@ import { AssessmentComponent } from './components/views/assessment/assessment.co
 import { AdminComponent } from './components/views/admin/admin.component';
 import { PageNotFoundComponent } from './components/views/page-not-found/page-not-found.component';
 import { EmployeeSearchComponent } from './components/views/employee-search/employee-search.component';
+import { MainComponent } from './components/views/main/main.component';
+import { MainMenuComponent } from './components/views/main-menu/main-menu.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { EmployeeSearchComponent } from './components/views/employee-search/empl
     AssessmentComponent,
     AdminComponent,
     PageNotFoundComponent,
-    EmployeeSearchComponent
+    EmployeeSearchComponent,
+    MainComponent,
+    MainMenuComponent
   ],
   imports: [
     BrowserModule,
