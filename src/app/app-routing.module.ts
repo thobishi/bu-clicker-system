@@ -14,7 +14,14 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'employee-search', component: EmployeeSearchComponent},
   { path: 'induction', component: InductionComponent },
-  { path: 'assessment', component: AssessmentComponent },
+  {
+    path: 'assessment',
+    component: AssessmentComponent,
+    children: [
+      { path: '', redirectTo: 'employee-search', pathMatch: 'full' },
+      { path: 'employee-search', component: EmployeeSearchComponent},
+    ]
+  },
   { path: 'admin', component: AdminComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

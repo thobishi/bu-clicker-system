@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   // TODO: Implement login via Firebase
   BuLogin() {
-    this.router.navigateByUrl('/induction');
+    this.router.navigateByUrl('/assessment');
   }
 
 }
