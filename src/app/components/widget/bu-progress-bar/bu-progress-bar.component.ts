@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+//
+import { BuProgressBarDataService } from '../../../service/bu-progress-bar-data.service';
+
 
 @Component({
   selector: 'app-bu-progress-bar',
@@ -9,16 +12,19 @@ export class BuProgressBarComponent implements OnInit {
   //
   @Input() BuProgressTotal: number;
   @Input() BuProgressCount: number;
-  BuProgressPercent = ( this.BuProgressCount / this.BuProgressTotal ) * 100;
+  BuProgressPercent = 0;
 
-  constructor() { }
+  constructor(private buProgressBarDataService: BuProgressBarDataService) { }
 
-  ngOnInit() {//
-    this.setProgress();
+  ngOnInit() {
+    this.buProgressBarDataService.BuCurrentData.subscribe(
+      //
+      data => {
+        this.BuProgressPercent = ( data.count / data.total ) * 100;
+      }
+    );
+
   }
-  //
-  setProgress() {
-    this.BuProgressPercent = ( this.BuProgressCount / this.BuProgressTotal ) * 100;
-  }
+
 
 }

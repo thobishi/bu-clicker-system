@@ -6,51 +6,45 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class BuProgressBarDataService {
   //
-  private ProgressPercent = new BehaviorSubject(0);
+  private BuData = new BehaviorSubject({ total: 0, count: 1 });
   //
-  BuCurrentProgressPercent = this.ProgressPercent.asObservable();
+  BuCurrentData = this.BuData.asObservable();
+
   //
   constructor() { }
   //
-  changeProgressPercent(count: number, total: number) {
+  changeData(buCount: number, buTotal: number) {
     //
-    this.setProgressPercent(this.getPercentage(count, total));
+    const data = { total: buTotal, count: buCount };
     //
-    this.ProgressPercent.next(Number(this.getProgressPercent()));
-  }
-  getPercentage(count: number, total: number) {
-    return  (count / total) * 100;
+    this.setData(data);
+    //
+    this.BuData.next(this.getData());
   }
   //
-  setProgressPercent(percentTotal: number) {
+  setData(data: any) {
     //
-    sessionStorage.setItem('percentTotal', percentTotal.toString());
-  }
-  getProgressPercent() {
-    //
-    const percentTotal = sessionStorage.getItem('percentTotal');
-    return Number(percentTotal);
-  }
-  //
-  setAnswered(count: number) {
-    //
-    const numCount = this.getAnswered();
-    const answered = Number(numCount) + count;
-    //
-    sessionStorage.setItem('answered', answered.toString());
-  }
-  getAnswered() {
-    const answered = sessionStorage.getItem('answered');
-    return Number(answered);
-  }
-  //
-  setTotal(total: number) {
-    sessionStorage.setItem('total', total.toString());
-  }
-  getTotal() {
-    const total = sessionStorage.getItem('total');
+    sessionStorage.setItem('BuData', JSON.stringify(data));
 
-    return Number(total);
   }
+  getData() {
+    //
+    return JSON.parse(sessionStorage.getItem('BuData'));
+  }
+  //
+  getTotal() {
+    //
+    const data = this.getData();
+    //
+    return data.total;
+  }
+  getCount() {
+    //
+    const data = this.getData();
+    //
+    return data.count;
+  }
+  //
+
 
 }
