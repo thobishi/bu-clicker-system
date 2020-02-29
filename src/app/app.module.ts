@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './components/views/page-not-found/page-no
 import { EmployeeSearchComponent } from './components/views/employee-search/employee-search.component';
 import { MainComponent } from './components/views/main/main.component';
 import { MainMenuComponent } from './components/views/main-menu/main-menu.component';
+import { BuProgressBarComponent } from './components/widget/bu-progress-bar/bu-progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MainMenuComponent } from './components/views/main-menu/main-menu.compon
     PageNotFoundComponent,
     EmployeeSearchComponent,
     MainComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    BuProgressBarComponent
   ],
   imports: [
     BrowserModule,

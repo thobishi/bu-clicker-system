@@ -1,9 +1,68 @@
 <div id="bu-assessment-wrapper" class="bu-flex-center">
 
-  <h1 class="bu-assessment-header mb-5">Induction Question 1</h1>
+  <h1 class="bu-assessment-header mb-2">Induction Question {{questionNumber}}</h1>
 
   <hr>
 
-  <div class="list-group-item bu-question-container"></div>
+  <div  class="list-group-item bu-question-container p-2">
+
+    <div id="bu-assessment-indicators" class="carousel slide" data-ride="carousel" data-interval="false">
+
+      <div class="carousel-inner">
+        <div  *ngFor="let item of questions; let i = index" [ngClass]="{ 'carousel-item': true, 'active': setDisable(questionNumber) }" >
+
+          <div class="list-group-item bu-question-window p-3">
+
+            <div class="list-group-item p-2">
+
+              <div class="row p-0 m-0">
+
+                <div class="col-md-1 p-0 text-center">
+                  <span class="">
+                    {{question.question_number}}
+                    <i class="fas fa-arrow-right"></i>
+                  </span>
+                </div>
+
+                <div class="col-md-11 p-0">
+                  <span>
+                    {{question.question}}
+                  </span>
+                </div>
+
+              </div>
+
+
+
+            </div>
+            <br>
+            <div class="list-group-item p-2"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="bu-navigation-container bu-flex-middle p-0">
+
+      <app-bu-progress-bar [BuProgressTotal]="totalQuestions" [BuProgressCount]="questionNumber" ></app-bu-progress-bar>
+      <div class="bu-navigation-btns p-1">
+
+        <button id="bu-btn-previous" (click)="setQuestionNumberDecrement(); setQuestion(questionNumber)" class="bu-btn btn btn-sm ml-1 text-white" href="#bu-assessment-indicators" role="button" data-slide="prev" role="button" [disabled]="setDisable(1)">
+          <i style="font-size: 11px;" class="fas fa-chevron-left"></i>
+        </button>
+        <button id="bu-btn-next-page" (click)="setQuestionNumberIncrement(); setQuestion(questionNumber)" class="bu-btn btn btn-sm ml-1 text-white" href="#bu-assessment-indicators" role="button" data-slide="next" role="button" [disabled]="setDisable(totalQuestions)">
+          <i style="font-size: 11px;" class="fas fa-chevron-right"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
