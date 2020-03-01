@@ -28,7 +28,7 @@ import { BuProgressBarComponent } from './components/widget/bu-progress-bar/bu-p
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

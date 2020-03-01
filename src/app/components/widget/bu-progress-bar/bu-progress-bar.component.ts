@@ -17,12 +17,7 @@ export class BuProgressBarComponent implements OnInit {
   constructor(private buProgressBarDataService: BuProgressBarDataService) { }
 
   ngOnInit() {
-    this.buProgressBarDataService.BuCurrentData.subscribe(
-      //
-      data => {
-        this.BuProgressPercent = ( data.count / data.total ) * 100;
-      }
-    );
+    this.BuProgressPercent = ( this.BuProgressCount / this.BuProgressTotal ) * 100;
 
   }
 

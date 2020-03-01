@@ -1,57 +1,52 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, from } from 'rxjs';
+//
+import { Question } from '../interfaces/question';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuProgressBarDataService {
   //
-  private BuNewData = { total: 0, count: 1 };
-  private BuData = new BehaviorSubject(this.BuNewData);
+  private buQuestions = new BehaviorSubject(Array<Question>());
+  private buQuestionNumber = new BehaviorSubject(0);
   //
-  BuCurrentData = this.BuData.asObservable();
-
+  BuCurrentQuestions = this.buQuestions.asObservable();
+  BuCurrentQuestionNumber = this.buQuestionNumber.asObservable();
   //
   constructor() {}
   //
-  changeData(buCount: number, buTotal: number) {
+  changeQuestion( buQuestions: Question[] ) {
     //
-    const data = {count: buCount, total: buTotal };
+    // this.storeBuQuestions(buQuestions);
+    this.buQuestions.next(buQuestions);
+  }
+  changeQuestionNumber(buQuestionNumber: number) {
     //
-    console.log('changeData ' + JSON.stringify(data));
-    //
-    this.setData(data);
-    //
-    const newData = this.getData();
-    //
-    this.BuData.next(newData);
+    // this.storeBuQuestionNumber(buQuestionNumber);
+    this.buQuestionNumber.next(buQuestionNumber);
   }
   //
-  setData(data: any) {
+  storeBuQuestions(buTotal: Question[]) {
     //
-    sessionStorage.setItem('BuData', JSON.stringify(data));
+    const buTotalNew = {data: buTotal};
+    localStorage.setItem('buQuestions', JSON.stringify(buTotalNew));
+  }
+  storeBuQuestionNumber(BuQuestionNumber: number) {
+    //
+    localStorage.setItem('buQuestionNumber', BuQuestionNumber.toString());
+  }
 
+  fetchBuQuestions() {
+    //
+    const buData = JSON.parse(localStorage.getItem('buQuestions'));
+    //
+    return buData.data;
   }
-  getData() {
+  fetchBuQuestionNumber() {
     //
-    return JSON.parse(sessionStorage.getItem('BuData'));
+    return Number(localStorage.getItem('buQuestionNumber'));
   }
-  //
-  getTotal() {
-    //
-    const data = this.getData();
-    console.log('Fetched Total' + data.total);
-    //
-    return data.total;
-  }
-  getCount() {
-    //
-    const data = this.getData();
-    console.log('Fetched Count' + data.count);
-    //
-    return data.count;
-  }
-  //
 
 
 }
