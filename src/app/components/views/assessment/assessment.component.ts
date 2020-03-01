@@ -15,33 +15,36 @@ export class AssessmentComponent implements OnInit {
   //
   questions: Question[] = questions;
   answers: Answer[] = answers;
-  totalQuestions: number = this.buProgressBarDataService.getTotal();
-  questionNumber: number = this.buProgressBarDataService.getCount();
-  question: Question = this.questions[this.buProgressBarDataService.getCount() - 1];
+  totalQuestions: number = undefined;
+  questionNumber = 1;
+  question: Question;
 
-  constructor(private eleRef: ElementRef, private buProgressBarDataService: BuProgressBarDataService) { }
+  constructor(private eleRef: ElementRef, private buProgressBarDataService: BuProgressBarDataService) {
+    //
+  }
 
   ngOnInit() {
     //
     this.setData();
     this.getData();
 
+
   }
   //
   setData() {
-
+    //
+    if (typeof this.questionNumber !== 'number') {
+      //
+      this.buProgressBarDataService.changeData( 1, this.questions.length);
+      return;
+    }
     //
     this.buProgressBarDataService.changeData( this.questionNumber, this.questions.length);
   }
   getData() {
-    this.buProgressBarDataService.BuCurrentData.subscribe(
-      //
-      BuData => {
-        //
-        this.totalQuestions = BuData.total;
-        this.questionNumber = BuData.count;
-      }
-    );
+    //
+    this.totalQuestions = this.buProgressBarDataService.getTotal();
+    this.questionNumber = this.buProgressBarDataService.getCount();
   }
   //
   @HostListener('window:keypress', ['$event'])
@@ -65,6 +68,8 @@ export class AssessmentComponent implements OnInit {
     const questionIndex = questionNumber - 1;
     //
     this.question = this.questions[questionIndex];
+    //
+    this.getData();
 
   }
   //
@@ -95,6 +100,9 @@ export class AssessmentComponent implements OnInit {
         this.questionNumber = BuData.count;
       }
     );
+   } else {
+     //
+    this.buProgressBarDataService.changeData( this.questionNumber, this.questions.length);
    }
   }
   //

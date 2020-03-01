@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "bu-clicker-system",
+    "public": "dist/bu-clicker-system",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

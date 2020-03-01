@@ -6,20 +6,25 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class BuProgressBarDataService {
   //
-  private BuData = new BehaviorSubject({ total: 0, count: 1 });
+  private BuNewData = { total: 0, count: 1 };
+  private BuData = new BehaviorSubject(this.BuNewData);
   //
   BuCurrentData = this.BuData.asObservable();
 
   //
-  constructor() { }
+  constructor() {}
   //
   changeData(buCount: number, buTotal: number) {
     //
-    const data = { total: buTotal, count: buCount };
+    const data = {count: buCount, total: buTotal };
+    //
+    console.log('changeData ' + JSON.stringify(data));
     //
     this.setData(data);
     //
-    this.BuData.next(this.getData());
+    const newData = this.getData();
+    //
+    this.BuData.next(newData);
   }
   //
   setData(data: any) {
@@ -35,12 +40,14 @@ export class BuProgressBarDataService {
   getTotal() {
     //
     const data = this.getData();
+    console.log('Fetched Total' + data.total);
     //
     return data.total;
   }
   getCount() {
     //
     const data = this.getData();
+    console.log('Fetched Count' + data.count);
     //
     return data.count;
   }
