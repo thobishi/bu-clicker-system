@@ -122,25 +122,25 @@ const questions: Question[] = [
     description: '',
     question_number: '1',
     // tslint:disable-next-line:max-line-length
-    question: 'This is the first question. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, quidem soluta. Eius ducimus neque ad, laborum accusantium esse doloribus dolore, tenetur nobis a quia illo omnis magni commodi quisquam obcaecati.',
+    question: 'Which are the proper full description for I CARE, in terms of our values',
     answers: [
       {
         id: 1,
         question_id: 1,
         answer_alphabet: 'A',
-        answer: '------'
+        answer: 'Integrity, Community, Accceptable, Resposible, Excellence'
       },
       {
         id: 2,
         question_id: 1,
         answer_alphabet: 'B',
-        answer: '------'
+        answer: 'Integrity, Commitment, Accountability, Respect, Excellence'
       },
       {
         id: 3,
         question_id: 1,
         answer_alphabet: 'C',
-        answer: '------'
+        answer: 'International, Center, Association, Represent, Excellence'
       }
     ]
   },
@@ -149,25 +149,26 @@ const questions: Question[] = [
     title: '',
     description: '',
     question_number: '2',
-    question: 'This is the second question',
+    // tslint:disable-next-line:max-line-length
+    question: 'What does the SHEQ policy require from all Employees?',
     answers: [
       {
         id: 4,
-        question_id: 2,
+        question_id: 1,
         answer_alphabet: 'A',
-        answer: '------'
+        answer: 'Do your work and knock off when it is time to knock off.'
       },
       {
         id: 5,
-        question_id: 2,
+        question_id: 1,
         answer_alphabet: 'B',
-        answer: '------'
+        answer: 'Report all accidents, incidents and non-conformance.'
       },
       {
         id: 6,
-        question_id: 2,
+        question_id: 1,
         answer_alphabet: 'C',
-        answer: '------'
+        answer: 'Continue working at all times.'
       }
     ]
   },
@@ -176,100 +177,51 @@ const questions: Question[] = [
     title: '',
     description: '',
     question_number: '3',
-    question: 'This is the third question',
-    answers: []
+    // tslint:disable-next-line:max-line-length
+    question: 'According to the HRD Quality Statement/Objectives & Commitment, it is the quality statement of the Mine Humen Resource Development to provide training that consistently meets the requirement of our clients.',
+    answers: [
+      {
+        id: 7,
+        question_id: 3,
+        answer_alphabet: 'A',
+        answer: 'True'
+      },
+      {
+        id: 8,
+        question_id: 3,
+        answer_alphabet: 'B',
+        answer: 'False'
+      }
+    ]
   },
   {
     id: 4,
     title: '',
     description: '',
     question_number: '4',
-    question: 'This is the fourth question',
+    // tslint:disable-next-line:max-line-length
+    question: 'Which one of the following is a statement from \'FIRE RISK STATEMEENT\': ',
     answers: [
-      {
-        id: 7,
-        question_id: 4,
-        answer_alphabet: 'A',
-        answer: '------'
-      },
-      {
-        id: 8,
-        question_id: 4,
-        answer_alphabet: 'B',
-        answer: '------'
-      },
       {
         id: 9,
         question_id: 4,
+        answer_alphabet: 'A',
+        // tslint:disable-next-line:max-line-length
+        answer: 'All processes, activities, workplaces and equipment are included in a comprehensive fire risk management program to ensure a continuous safe production cycle.'
+      },
+      {
+        id: 10,
+        question_id: 4,
+        answer_alphabet: 'B',
+        answer: 'Not all fire risks annd reelated information mustt be recorded on the important once.'
+      },
+      {
+        id: 11,
+        question_id: 4,
         answer_alphabet: 'C',
-        answer: '------'
+        answer: 'Fire risks are only identified only when they occurr, these makes the Mine avoid tooo much work, looking for faults.'
       }
     ]
-  },
-  {
-    id: 5,
-    title: '',
-    description: '',
-    question_number: '5',
-    question: 'This is the fith question',
-    answers: []
-  },
-  {
-    id: 6,
-    title: '',
-    description: '',
-    question_number: '6',
-    question: 'This is the sixth question',
-    answers: []
-  },
-  {
-    id: 7,
-    title: '',
-    description: '',
-    question_number: '7',
-    question: 'This is the seventh question',
-    answers: []
-  },
-  {
-    id: 8,
-    title: '',
-    description: '',
-    question_number: '8',
-    question: 'This is the eighth question',
-    answers: []
-  },
-  {
-    id: 9,
-    title: '',
-    description: '',
-    question_number: '9',
-    question: 'This is the ninth question',
-    answers: []
-  },
-  {
-    id: 10,
-    title: '',
-    description: '',
-    question_number: '10',
-    question: 'This is the tenth question',
-    answers: []
-  },
-  {
-    id: 11,
-    title: '',
-    description: '',
-    question_number: '11',
-    // tslint:disable-next-line:max-line-length
-    question: 'This is the eleventh question. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, quidem soluta. Eius ducimus neque ad, laborum accusantium esse doloribus dolore, tenetur nobis a quia illo omnis magni commodi quisquam obcaecati.',
-    answers: []
-  },
-  {
-    id: 12,
-    title: '',
-    description: '',
-    question_number: '12',
-    question: 'This is the twelth question',
-    answers: []
   }
 ];
 //

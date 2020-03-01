@@ -9,6 +9,16 @@ html, body {
     justify-content: center;
     align-items: center;
 }
+.bu-flex-start-middle {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.bu-flex-end-middle {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 .bu-flex-center {
     display: flex;
     justify-content: center;
