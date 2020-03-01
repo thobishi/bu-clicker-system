@@ -24,11 +24,19 @@
 .bu-question-window {
   height: 595px;
 }
+.bu-card {
+  box-shadow: rgba(52, 118, 117, 0.6) 0px 0px 0px 1px inset;
+
+}
 #bu-answer-item .bu-answer-text {
-  color: rgb(52, 118, 117)
+  color: rgb(52, 118, 117);
+
 
 }
 #bu-answer-item .bu-answer-alphabet {
   color: rgb(52, 118, 117);
-  background-color: rgba(52, 118, 117, 0.5);
+  background-color: rgba(52, 118, 117, 0.2);
+}
+.bu-question-wrapper {
+  border: none;
 }

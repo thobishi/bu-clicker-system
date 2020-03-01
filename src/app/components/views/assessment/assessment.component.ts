@@ -13,36 +13,71 @@ import { BuProgressBarDataService } from '../../../service/bu-progress-bar-data.
 export class AssessmentComponent implements OnInit {
 
   //
-  questions: Question[] = questions;
-  answers: Answer[] = answers;
-  totalQuestions: number = this.buProgressBarDataService.getTotal();
-  questionNumber: number = this.buProgressBarDataService.getCount();
-  question: Question = this.questions[this.buProgressBarDataService.getCount() - 1];
+  questions: Question[];
+  totalQuestions = null;
+  questionNumber = 1;
+  question: Question;
 
-  constructor(private eleRef: ElementRef, private buProgressBarDataService: BuProgressBarDataService) { }
+  constructor(private eleRef: ElementRef, private buProgressBarDataService: BuProgressBarDataService) {
+    //
+  }
 
   ngOnInit() {
     //
-    this.setData();
-    this.getData();
+    if (this.totalQuestions === null ) {
+      //
+      console.log('Triggered: ');
+      //
+      this.buProgressBarDataService.changeQuestion(questions);
+      this.buProgressBarDataService.changeQuestionNumber(1);
+      this.buProgressBarDataService.BuCurrentQuestionNumber.subscribe(
+        //
+        BuCurrentQuestionNumber => {
+          this.questionNumber = BuCurrentQuestionNumber;
+          console.log('Triggered: BuCurrentQuestionNumber ' + BuCurrentQuestionNumber);
+        }
+      );
+      this.buProgressBarDataService.BuCurrentQuestions.subscribe(
+        //
+        BuCurrentQuestions => {
+          this.totalQuestions = BuCurrentQuestions.length;
+          this.questions = BuCurrentQuestions;
+          console.log('Triggered: totalQuestions ' + this.totalQuestions);
+          console.log('Triggered: questions ' + JSON.stringify(this.questions));
+        }
+      );
+    } else if (this.totalQuestions >= 0 && this.questionNumber === 0) {
+      //
+      this.buProgressBarDataService.storeBuQuestionNumber(1);
+      this.buProgressBarDataService.BuCurrentQuestionNumber.subscribe(
+        //
+        BuCurrentQuestionNumber => this.questionNumber = BuCurrentQuestionNumber
+      );
+      this.buProgressBarDataService.BuCurrentQuestions.subscribe(
+        //
+        BuCurrentQuestions => {
+          this.totalQuestions = BuCurrentQuestions.length;
+          this.questions = BuCurrentQuestions;
+        }
+      );
+    } else {
+      //
+      this.buProgressBarDataService.BuCurrentQuestionNumber.subscribe(
+        //
+        BuCurrentQuestionNumber => this.questionNumber = BuCurrentQuestionNumber
+      );
+      this.buProgressBarDataService.BuCurrentQuestions.subscribe(
+        //
+        BuCurrentQuestions => {
+          this.totalQuestions = BuCurrentQuestions.length;
+          this.questions = BuCurrentQuestions;
+        }
+      );
+    }
 
   }
   //
-  setData() {
 
-    //
-    this.buProgressBarDataService.changeData( this.questionNumber, this.questions.length);
-  }
-  getData() {
-    this.buProgressBarDataService.BuCurrentData.subscribe(
-      //
-      BuData => {
-        //
-        this.totalQuestions = BuData.total;
-        this.questionNumber = BuData.count;
-      }
-    );
-  }
   //
   @HostListener('window:keypress', ['$event'])
   handleKeyPress(event: KeyboardEvent) {
@@ -60,52 +95,27 @@ export class AssessmentComponent implements OnInit {
     }
   }
   //
-  setQuestion(questionNumber: number) {
-    //
-    const questionIndex = questionNumber - 1;
-    //
-    this.question = this.questions[questionIndex];
-
+  setQuestionNumberDecrement() {
+    if (this.questionNumber > 1) {
+      this.questionNumber = --this.questionNumber;
+      this.buProgressBarDataService.changeQuestionNumber(this.questionNumber);
+    }
   }
   //
   setQuestionNumberIncrement() {
-
-    this.buProgressBarDataService.changeData( ++this.questionNumber, this.questions.length);
-    this.buProgressBarDataService.BuCurrentData.subscribe(
+    //
+    if (this.questionNumber > this.totalQuestions) {
       //
-      BuData => {
-        //
-        this.totalQuestions = BuData.total;
-        this.questionNumber = BuData.count;
-      }
-    );
-
-  }
-  //
-  setQuestionNumberDecrement() {
-   if ( this.questionNumber !== 1) {
-     //
-     // this.questionNumber = --this.questionNumber;
-     this.buProgressBarDataService.changeData( --this.questionNumber, this.questions.length);
-     this.buProgressBarDataService.BuCurrentData.subscribe(
-      //
-      BuData => {
-        //
-        this.totalQuestions = BuData.total;
-        this.questionNumber = BuData.count;
-      }
-    );
-   }
-  }
-  //
-  setActive(i) {
-
+      this.questionNumber = ++this.questionNumber;
+      this.buProgressBarDataService.changeQuestionNumber(this.questionNumber);
+    }
   }
   //
   setDisable(questionNumber: number) {
-    // console.log(questionNumber + ' ' + this.questionNumber);
     //
-    if (this.questionNumber === questionNumber) {
+    console.log(questionNumber + ' ' + this.questionNumber);
+    //
+    if (this.questionNumber === (questionNumber + 1)) {
       return true;
     } else {
       return false;
