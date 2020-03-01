@@ -35,6 +35,7 @@ export class BuProgressBarDataService {
   getTotal() {
     //
     const data = this.getData();
+    console.log('getTotal() ' + data)
     //
     return data.total;
   }

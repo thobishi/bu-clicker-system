@@ -15,9 +15,9 @@ export class AssessmentComponent implements OnInit {
   //
   questions: Question[] = questions;
   answers: Answer[] = answers;
-  totalQuestions: number = this.buProgressBarDataService.getTotal();
-  questionNumber: number = this.buProgressBarDataService.getCount();
-  question: Question = this.questions[this.buProgressBarDataService.getCount() - 1];
+  totalQuestions: number = this.questions.length;
+  questionNumber = 1;
+  question: Question = this.questions[this.questionNumber - 1];
 
   constructor(private eleRef: ElementRef, private buProgressBarDataService: BuProgressBarDataService) { }
 
@@ -121,6 +121,7 @@ const questions: Question[] = [
     title: '',
     description: '',
     question_number: '1',
+    // tslint:disable-next-line:max-line-length
     question: 'This is the first question. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, quidem soluta. Eius ducimus neque ad, laborum accusantium esse doloribus dolore, tenetur nobis a quia illo omnis magni commodi quisquam obcaecati.',
     answers: [
       {
@@ -258,6 +259,7 @@ const questions: Question[] = [
     title: '',
     description: '',
     question_number: '11',
+    // tslint:disable-next-line:max-line-length
     question: 'This is the eleventh question. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, quidem soluta. Eius ducimus neque ad, laborum accusantium esse doloribus dolore, tenetur nobis a quia illo omnis magni commodi quisquam obcaecati.',
     answers: []
   },
